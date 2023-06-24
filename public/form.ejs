@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>LogMAR Report for <%= details.name %></title>
+  <style>
+    /* Define some CSS styles for the report */
+    body {
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+    }
+    h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+    table {
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+    th, td {
+      border: 1px solid black;
+      padding: 8px;
+    }
+    th {
+      background-color: #ccc;
+    }
+    .download-button {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>LogMAR Report for <%= details.name %></h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Eye</th>
+        <th>LogMAR</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Left</td>
+        <td><%= details.left_logmar %></td>
+      </tr>
+      <tr>
+        <td>Right</td>
+        <td><%= details.right_logmar %></td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="download-button">
+    <a href="data:application/pdf;base64,<%= pdfData %>" download="<%= details.name %>-report.pdf">Download PDF</a>
+  </div>
+</body>
+</html>
